@@ -13,7 +13,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<TelaInicial />} />
+          {/* <Route path='/' element={<TelaInicial />} /> */}
+          <Route path='/frontend_FS2' element={<TelaInicial />} />
           <Route path='/cadastrar' element={<TelaCadastrar />} />
           <Route path='/alterar' element={<TelaAlterar />} />
           <Route path='/excluir' element={<TelaExcluir />} />
