@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import TelaCadastrar from './telas/TelaCadastrar';
+import TelaAlterar from './telas/TelaAlterar';
+import TelaExcluir from './telas/TelaExcluir';
+import TelaInicial from './telas/TelaInicial';
+import Tela404 from './telas/Tela404';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import TelaConsultar from './telas/TelaConsultar';
+import TelaAgencia from './telas/TelaAgencia';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<TelaInicial />} />
+          <Route path='/cadastrar' element={<TelaCadastrar />} />
+          <Route path='/alterar' element={<TelaAlterar />} />
+          <Route path='/excluir' element={<TelaExcluir />} />
+          <Route path='/consultar' element={<TelaConsultar />} />
+          <Route path='/cadastrarAgencia' element={<TelaAgencia />} />
+          <Route path='*' element={<Tela404 />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
