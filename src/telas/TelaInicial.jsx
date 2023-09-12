@@ -1,15 +1,9 @@
-// OK
 import { Row, Button, Col, Image } from 'react-bootstrap';
 import Pagina from '../templates/Pagina';
 import { LinkContainer } from 'react-router-bootstrap';
-import { useState } from 'react';
-import listaContas from '../dados/mockContas';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function TelaInicial(props) {
-  const [exibirTabela, setExibirTabela] = useState(true);
-  const [contas, setContas] = useState(listaContas);
-
   return (
     <Pagina>
       <Row className='d-flex align-items-center justify-content-center'>
