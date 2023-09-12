@@ -1,12 +1,26 @@
 import { Button, Col, Container, Form, Row, Table } from 'react-bootstrap';
 import Pagina from '../templates/Pagina';
 import { LinkContainer } from 'react-router-bootstrap';
-import { useState } from 'react';
-import listaContas from '../dados/mockContas';
+import { useEffect, useState } from 'react';
+import contas from '../dados/mockContas';
 // import listaContas from '../dados/mockContas.js';
 
 export default function TelaConsultar(props) {
   const [contas, setContas] = useState([]);
+
+  function consultarContas() {
+    fetch('http://localhost:3000/contas')
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((resp) => {
+        setContas(resp);
+      });
+  }
+
+  useEffect(() => {
+    consultarContas();
+  }, []);
 
   return (
     <Pagina>
@@ -23,7 +37,7 @@ export default function TelaConsultar(props) {
           </thead>
           <tbody>
             {/* ? →  método map só será chamado se listaClientes for um atributo válido */}
-            {listaContas?.map((conta) => {
+            {contas?.map((conta) => {
               return (
                 //   necessário identificar cada linha da tabela usando "key"
                 // key → ajuda o React na rendereização dos componentes no DOM virtual

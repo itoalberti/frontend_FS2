@@ -15,6 +15,21 @@ export default function TelaCadastrar(props) {
     ano: '',
   });
 
+  function cadastrarConta() {
+    fetch('http://localhost:3000/contas', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(conta),
+    })
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((resp) => {
+        console.log(resp);
+        alert(resp.msg);
+      });
+  }
+
   //OK
   function manipularMudanca(e) {
     const elemForm = e.currentTarget;
@@ -92,7 +107,7 @@ export default function TelaCadastrar(props) {
           <Row>
             {/* BOTÃO DE CADASTRAR */}
             <Col xs='auto'>
-              <Button variant='dark' type='submit'>
+              <Button variant='dark' onClick={cadastrarConta}>
                 Cadastrar conta
               </Button>
             </Col>

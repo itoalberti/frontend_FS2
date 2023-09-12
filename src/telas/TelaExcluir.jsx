@@ -2,8 +2,31 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import Pagina from '../templates/Pagina';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useRef } from 'react';
 
 export default function TelaExcluir() {
+  const email = useRef('');
+  const senha = useRef('');
+  // precisa incluir [validado, setValidado] e [conta, setConta]?
+
+  function excluirConta() {
+    fetch('http://localhost:3000/contas', {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        email: email.current.value,
+        senha: senha.current.value,
+      }),
+    })
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((resp) => {
+        console.log(resp);
+        alert(resp.msg);
+      });
+  }
+
   return (
     <Pagina>
       <h2>Exclusão de conta</h2>
@@ -12,7 +35,7 @@ export default function TelaExcluir() {
         {/* EMAIL */}
         <Form.Group className='mb-3' controlId='formEmail' style={{ width: '340px' }}>
           <Form.Label>Digite o email da conta que deseja excluir:</Form.Label>
-          <Form.Control required type='email' />
+          <Form.Control required type='email' ref={email} />
           <Form.Control.Feedback type='invalid'>Informe o email do cliente!</Form.Control.Feedback>
         </Form.Group>
 
@@ -21,23 +44,23 @@ export default function TelaExcluir() {
           <Col md='2'>
             <Form.Group className='mb-3' controlId='formSenha' style={{ width: '150px' }}>
               <Form.Label>Senha:</Form.Label>
-              <Form.Control required type='password' />
+              <Form.Control required type='password' ref={senha} />
             </Form.Group>
           </Col>
 
           {/* REPETIR A SENHA */}
-          <Col md='2'>
+          {/* <Col md='2'>
             <Form.Group className='mb-3' controlId='formSenha' style={{ width: '150px' }}>
               <Form.Label>Repita a senha:</Form.Label>
               <Form.Control required type='password' />
             </Form.Group>
-          </Col>
+          </Col> */}
         </Row>
         <br />
         <Row>
           {/* BOTÃO DE CADASTRAR */}
           <Col xs='auto'>
-            <Button variant='danger' type='submit'>
+            <Button variant='danger' onClick={excluirConta}>
               Confirmar exclusão
             </Button>
           </Col>
