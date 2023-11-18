@@ -12,8 +12,8 @@ export default function TelaAlterarConta() {
     email: '',
     nome: '',
     senha: '',
-    agencia: '',
     ano: '',
+    codigo: '',
   });
 
   function obterConta() {
@@ -27,12 +27,6 @@ export default function TelaAlterarConta() {
         setConta(resp);
       });
   }
-
-  // const [agencia, setAgencia] = useState({
-  //   endereco: '',
-  //   cidade: '',
-  //   codigo: '',
-  // });
 
   function alterarConta() {
     conta.num = num;
@@ -58,7 +52,7 @@ export default function TelaAlterarConta() {
     const id = elemForm.id;
     const valor = elemForm.value;
     setConta({ ...conta, [id]: valor });
-    // setAgencia({ ...agencia, [id]: valor });
+    // setcodigo({ ...codigo, [id]: valor });
   }
 
   return (
@@ -98,9 +92,9 @@ export default function TelaAlterarConta() {
         <Row>
           {/* AGÊNCIA */}
           <Col md='2'>
-            <Form.Group className='mb-3' controlId='formAgencia' style={{ width: '150px' }}>
+            <Form.Group className='mb-3' controlId='codigo' style={{ width: '150px' }}>
               <Form.Label>Agência:</Form.Label>
-              <Form.Control required type='number' id='agencia' value={conta.agencia} onChange={manipularMudanca} />
+              <Form.Control required type='number' id='codigo' value={conta.codigo} onChange={manipularMudanca} />
             </Form.Group>
           </Col>
         </Row>

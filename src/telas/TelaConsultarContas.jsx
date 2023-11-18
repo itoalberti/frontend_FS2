@@ -82,7 +82,7 @@ export default function TelaConsultarContas(props) {
                   <td>{conta.num}</td>
                   <td>{conta.nome}</td>
                   <td>{conta.email}</td>
-                  <td>{conta.agencia}</td>
+                  <td>{conta.codigo}</td>
                   <td>{conta.ano}</td>
                   <td>
                     <a href={`/alterarConta/${conta.num}`} type='button' class='btn btn-secondary' style={{ 'margin-right': '15px' }}>

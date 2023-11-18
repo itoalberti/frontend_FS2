@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useState } from 'react';
 // import listaContas from '../dados/mockContas.js';
 
-// para implementar função de escolher agencia da conta, popular o select para escolha da agencia
+// para implementar função de escolher agência da conta, popular o select para escolha da agencia
 
 export default function TelaCadastrarConta(props) {
   const [validado, setValidado] = useState(false);
@@ -13,7 +13,7 @@ export default function TelaCadastrarConta(props) {
     email: '',
     nome: '',
     senha: '',
-    agencia: '',
+    codigo: '',
     ano: '',
   });
 
@@ -87,9 +87,9 @@ export default function TelaCadastrarConta(props) {
 
             {/* AGÊNCIA */}
             <Col md='2'>
-              <Form.Group className='mb-3' controlId='agencia' style={{ width: '150px' }}>
+              <Form.Group className='mb-3' controlId='codigo' style={{ width: '150px' }}>
                 <Form.Label>Agência:</Form.Label>
-                <Form.Control required type='number' id='agencia' onChange={manipularMudanca} />
+                <Form.Control required type='number' id='codigo' onChange={manipularMudanca} />
               </Form.Group>
             </Col>
           </Row>

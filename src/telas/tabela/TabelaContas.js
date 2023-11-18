@@ -1,9 +1,9 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Container, Table } from 'react-bootstrap';
 import listaContas from '../../dados/mockContas.js';
 
 export default function TabelaContas(props) {
-  const [contas, setContas] = useState();
+  // const [contas, setContas] = useState();
 
   return (
     <Container>
@@ -13,9 +13,9 @@ export default function TabelaContas(props) {
         <thead>
           <tr>
             <th>Conta nº</th>
+            <th>Código da agência</th>
             <th>Nome</th>
             <th>Email</th>
-            <th>Agência</th>
             <th>Ano de nascimento</th>
           </tr>
         </thead>
@@ -26,9 +26,9 @@ export default function TabelaContas(props) {
               // key → ajuda o React na rendereização dos componentes no DOM virtual
               <tr key={conta.num}>
                 <td>{conta.num}</td>
+                <td>{conta.codAgencia}</td>
                 <td>{conta.nome}</td>
                 <td>{conta.email}</td>
-                <td>{conta.agencia}</td>
                 <td>{conta.ano}</td>
               </tr>
             );
