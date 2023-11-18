@@ -4,16 +4,29 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useState } from 'react';
 // import listaAgencias from '../dados/mockAgencias.js';
 
-export default function TelaAgencia(props) {
+export default function TelaCadastrarAgencia(props) {
   const [validado, setValidado] = useState(false);
   const [agencia, setAgencia] = useState({
-    // num: '',
     endereco: '',
     cidade: '',
     codigo: '',
   });
 
-  //OK
+  function cadastrarAgencia() {
+    fetch('http://localhost:3001/agencias', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(agencia),
+    })
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((resp) => {
+        console.log(resp);
+        alert(resp.msg);
+      });
+  }
+
   function manipularMudanca(e) {
     const elemForm = e.currentTarget;
     const id = elemForm.id;
@@ -37,9 +50,6 @@ export default function TelaAgencia(props) {
     e.stopPropagation();
   }
 
-  //
-  // RETURN
-  //
   return (
     <>
       <Pagina>
@@ -49,7 +59,7 @@ export default function TelaAgencia(props) {
           {/* ENDEREÇO */}
           <Form.Group className='mb-3' controlId='endereco' style={{ width: '400px' }}>
             <Form.Label>Endereço:</Form.Label>
-            <Form.Control required type='endereco' id='endereco' value={agencia.endereco} onChange={manipularMudanca} />
+            <Form.Control required type='text' id='endereco' value={agencia.endereco} onChange={manipularMudanca} />
             <Form.Control.Feedback type='invalid'>Informe o endereco da agência!</Form.Control.Feedback>
           </Form.Group>
 
@@ -60,21 +70,11 @@ export default function TelaAgencia(props) {
             <Form.Control.Feedback type='invalid'>Informe a cidade da agência!</Form.Control.Feedback>
           </Form.Group>
 
-          <Row>
-            {/* CÓDIGO */}
-            <Col md='2'>
-              <Form.Group className='mb-3' controlId='codigo' style={{ width: '150px' }}>
-                <Form.Label>Código da agência:</Form.Label>
-                <Form.Control required type='text' id='codigo' value={agencia.codigo} onChange={manipularMudanca} />
-                <Form.Control.Feedback type='invalid'>Informe o código da agência!</Form.Control.Feedback>
-              </Form.Group>
-            </Col>
-          </Row>
           <br />
           <Row>
             {/* BOTÃO DE CADASTRAR */}
             <Col xs='auto'>
-              <Button variant='dark' type='submit'>
+              <Button variant='dark' onClick={cadastrarAgencia}>
                 Cadastrar agência
               </Button>
             </Col>

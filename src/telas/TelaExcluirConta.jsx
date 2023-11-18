@@ -4,13 +4,14 @@ import Pagina from '../templates/Pagina';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useRef } from 'react';
 
-export default function TelaExcluir() {
+export default function TelaExcluirConta() {
   const email = useRef('');
   const senha = useRef('');
   // precisa incluir [validado, setValidado] e [conta, setConta]?
 
   function excluirConta() {
-    fetch('http://localhost:3000/contas', {
+    // fetch('http://localhost:3001/contas', {
+    fetch('http://localhost:3001/contas', {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
@@ -47,18 +48,11 @@ export default function TelaExcluir() {
               <Form.Control required type='password' ref={senha} />
             </Form.Group>
           </Col>
-
-          {/* REPETIR A SENHA */}
-          {/* <Col md='2'>
-            <Form.Group className='mb-3' controlId='formSenha' style={{ width: '150px' }}>
-              <Form.Label>Repita a senha:</Form.Label>
-              <Form.Control required type='password' />
-            </Form.Group>
-          </Col> */}
         </Row>
         <br />
+
         <Row>
-          {/* BOTÃO DE CADASTRAR */}
+          {/* BOTÃO DE EXCLUIR */}
           <Col xs='auto'>
             <Button variant='danger' onClick={excluirConta}>
               Confirmar exclusão

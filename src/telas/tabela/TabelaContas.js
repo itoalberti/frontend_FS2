@@ -15,6 +15,7 @@ export default function TabelaContas(props) {
             <th>Conta nº</th>
             <th>Nome</th>
             <th>Email</th>
+            <th>Agência</th>
             <th>Ano de nascimento</th>
           </tr>
         </thead>
@@ -27,6 +28,7 @@ export default function TabelaContas(props) {
                 <td>{conta.num}</td>
                 <td>{conta.nome}</td>
                 <td>{conta.email}</td>
+                <td>{conta.agencia}</td>
                 <td>{conta.ano}</td>
               </tr>
             );

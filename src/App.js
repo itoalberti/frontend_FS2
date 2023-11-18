@@ -1,12 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import TelaCadastrar from './telas/TelaCadastrar';
-import TelaAlterar from './telas/TelaAlterar';
-import TelaExcluir from './telas/TelaExcluir';
-import TelaInicial from './telas/TelaInicial';
-import Tela404 from './telas/Tela404';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import TelaConsultar from './telas/TelaConsultar';
-import TelaAgencia from './telas/TelaAgencia';
+import TelaInicial from './telas/TelaInicial';
+import TelaCadastrarConta from './telas/TelaCadastrarConta';
+import TelaCadastrarAgencia from './telas/TelaCadastrarAgencia';
+import TelaAlterarConta from './telas/TelaAlterarConta';
+import TelaAlterarAgencia from './telas/TelaAlterarAgencia';
+import TelaExcluirConta from './telas/TelaExcluirConta';
+import TelaExcluirAgencia from './telas/TelaExcluirAgencia';
+import TelaConsultarContas from './telas/TelaConsultarContas';
+import TelaConsultarAgencias from './telas/TelaConsultarAgencias';
+import Tela404 from './telas/Tela404';
 
 function App() {
   return (
@@ -14,17 +17,18 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<TelaInicial />} />
-          {/* <Route path='/frontend_FS2' element={<TelaInicial />} /> */}
-          <Route path='/cadastrar' element={<TelaCadastrar />} />
-          <Route path='/alterar' element={<TelaAlterar />} />
-          <Route path='/excluir' element={<TelaExcluir />} />
-          <Route path='/consultar' element={<TelaConsultar />} />
-          <Route path='/cadastrarAgencia' element={<TelaAgencia />} />
+          <Route path='/cadastrarConta' element={<TelaCadastrarConta />} />
+          <Route path='/alterarConta/:num' element={<TelaAlterarConta />} />
+          <Route path='/excluirConta' element={<TelaExcluirConta />} />
+          <Route path='/consultarContas' element={<TelaConsultarContas />} />
+          <Route path='/cadastrarAgencia' element={<TelaCadastrarAgencia />} />
+          <Route path='/alterarAgencia/:codigo' element={<TelaAlterarAgencia />} />
+          <Route path='/excluirAgencia' element={<TelaExcluirAgencia />} />
+          <Route path='/consultarAgencias' element={<TelaConsultarAgencias />} />
           <Route path='*' element={<Tela404 />} />
         </Routes>
       </BrowserRouter>
     </>
   );
 }
-
 export default App;

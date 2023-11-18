@@ -1,22 +1,24 @@
-// OK
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import Pagina from '../templates/Pagina';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useState } from 'react';
 // import listaContas from '../dados/mockContas.js';
 
-export default function TelaCadastrar(props) {
+// para implementar função de escolher agencia da conta, popular o select para escolha da agencia
+
+export default function TelaCadastrarConta(props) {
   const [validado, setValidado] = useState(false);
   const [conta, setConta] = useState({
-    num: '',
+    // num: '',
     email: '',
     nome: '',
     senha: '',
+    agencia: '',
     ano: '',
   });
 
   function cadastrarConta() {
-    fetch('http://localhost:3000/contas', {
+    fetch('http://localhost:3001/contas', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(conta),
@@ -30,7 +32,6 @@ export default function TelaCadastrar(props) {
       });
   }
 
-  //OK
   function manipularMudanca(e) {
     const elemForm = e.currentTarget;
     const id = elemForm.id;
@@ -54,9 +55,6 @@ export default function TelaCadastrar(props) {
     e.stopPropagation();
   }
 
-  //
-  // RETURN
-  //
   return (
     <>
       <Pagina>
@@ -87,12 +85,11 @@ export default function TelaCadastrar(props) {
               </Form.Group>
             </Col>
 
-            {/* REPETIR A SENHA */}
+            {/* AGÊNCIA */}
             <Col md='2'>
-              <Form.Group className='mb-3' controlId='senha2' style={{ width: '150px' }}>
-                <Form.Label>Repita a senha:</Form.Label>
-                <Form.Control required type='password' id='senha2' onChange={manipularMudanca} />
-                <Form.Control.Feedback type='invalid'>Repita a sua senha!</Form.Control.Feedback>
+              <Form.Group className='mb-3' controlId='agencia' style={{ width: '150px' }}>
+                <Form.Label>Agência:</Form.Label>
+                <Form.Control required type='number' id='agencia' onChange={manipularMudanca} />
               </Form.Group>
             </Col>
           </Row>
